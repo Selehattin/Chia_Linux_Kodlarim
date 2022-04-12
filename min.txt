@@ -1,0 +1,121 @@
+echo "farm01 - yr02"
+aws configure --profile WSProfil set aws_access_key_id 28HJ9Z80LAY6JNZHM3VD;
+aws configure --profile WSProfil set aws_secret_access_key 1q0i3POSYQLDz27BfPrA0mXCftf3aAGPD2YkituG;
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm01 ~/yr02
+
+echo "farm02 - yr03"
+aws configure --profile WSProfil set aws_access_key_id AJPI7068U7BUMJMWLADC;
+aws configure --profile WSProfil set aws_secret_access_key 3IKz2YZuiNgFetzn0n59hv6lU7IrNRR0rDaRAsMA;
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm02 ~/yr03
+cd /root/Mining/farm_2/linux
+screen -S f02min bash ./f02min 
+cd 
+
+echo "farm03 - yr05"
+aws configure --profile WSProfil set aws_access_key_id TGROMZSWOVE20DELX6TE;
+aws configure --profile WSProfil set aws_secret_access_key RBaIPPesuO3EIiDeMVRFAqHisHuDAsnDhgJqvLQB;
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm03 ~/yr05
+cd /root/Mining/farm_3/linux
+screen -S f03min bash ./f03min 
+cd 
+
+echo "farm04 - eun01"
+aws configure --profile WSProfil set aws_access_key_id V58MOO1LQY5DH65AW5AH
+aws configure --profile WSProfil set aws_secret_access_key 6nRuzr8wNpsWjuCPP2zJl2knw7sMYai2HmbEJosN
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm04 ~/eun01
+cd /root/Mining/farm_4/linux
+screen -S f04min bash ./f04min 
+cd 
+
+
+echo "farm05 - eun02"
+aws configure --profile WSProfil set aws_access_key_id CSCF9C1XJPSIVB3DULNU
+aws configure --profile WSProfil set aws_secret_access_key B4UsjlZcaS6U6KeuzuJYG1Tef15sqzkeRkBOMoje
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm05 ~/eun02
+
+cd /root/Mining/farm_5/linux
+screen -S f05min bash ./f05min 
+cd 
+
+echo "farm05 - eun04"
+aws configure --profile WSProfil set aws_access_key_id 9QJ5Z8GN5NYKT8HYDXDJ
+aws configure --profile WSProfil set aws_secret_access_key 8Plhon7nPAEshAoFrS5LLs1qaUg1aepfO6itcRha
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm06 ~/eun02
+
+cd /root/Mining/farm_6/linux
+screen -S f06min bash ./f06min 
+cd 
+
+echo "farm06 - eun06"
+aws configure --profile WSProfil set aws_access_key_id LYW3P80D0P2NG1AHS1TF
+aws configure --profile WSProfil set aws_secret_access_key Nfpf153m1J007dGCMDtYfMIBBeuTNOlt7mG5XLky
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm07 ~/eun04
+
+cd /root/Mining/farm_7/linux
+screen -S f07min bash ./f07min 
+cd 
+
+echo "farm07 - aa1"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+
+echo rar01- robot01"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+echo rar01- robot02"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+echo rar01- robot03"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+echo rar01- robot04"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+
+echo rar01- covid3"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
+
+echo rar01- covidtest02"
+aws configure --profile WSProfil set aws_access_key_id 1GA5ZEUJ92SWX5IRDKY6
+aws configure --profile WSProfil set aws_secret_access_key uPNwEA8bnvAXLrcaLDqegsRpOidlN2A3AjcXG4RV
+sudo ./goofys --endpoint https://s3.eu-central-1.wasabisys.com/ --uid $(id -u) --gid $(id -g) -o allow_other farm08 ~/aa1
+
+cd /root/Mining/farm_8/linux
+screen -S f08min bash ./f08min 
+cd 
