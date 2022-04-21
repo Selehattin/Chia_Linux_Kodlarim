@@ -13,7 +13,8 @@ sleep 2
 else
 echo "Devam ......................"
 bash kur.sh
-bash tummount.sh
+bash amount.sh
+bash bmount.sh
 fi
 
 if [[ $index -gt 3 ]]; then
