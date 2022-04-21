@@ -3,7 +3,7 @@ index=0
 while :
 do
 index=$(($index + 1))
-PLOT_FOLDER="/root/ap0$index/"
+PLOT_FOLDER="/root/br0$index/"
 PLOT_COUNT=$(find "$PLOT_FOLDER"  | wc -l)
 MIN_PLOT_COUNT=1
 if [ $PLOT_COUNT -gt $MIN_PLOT_COUNT ] 
