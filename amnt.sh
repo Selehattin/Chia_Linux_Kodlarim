@@ -14,7 +14,6 @@ else
 echo "Devam ......................"
 bash kur.sh
 bash amount.sh
-bash bmount.sh
 fi
 
 if [[ $index -gt 3 ]]; then
