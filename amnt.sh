@@ -12,10 +12,8 @@ then
 sleep 2
 else
 echo "Devam ......................"
-bash kur.sh
-bash amount.sh
+bash amount$index.sh
 fi
-
 if [[ $index -gt 3 ]]; then
       index=0
 fi
