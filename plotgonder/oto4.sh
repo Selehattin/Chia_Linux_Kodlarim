@@ -1,4 +1,4 @@
-index=0
+index=45
 index1=0
 kdosyayolu="disk1"
 baglanti="SP10"
@@ -10,8 +10,8 @@ sayi=($(ls -lR /root/$kdosyayolu/data/*.plot | wc -l))
 if [[ $sayi -gt 0 ]]; then  
    index=$(($index + 1))
    index1=$(($index1 + 1))
-   if [[ $index -gt 15 ]]; then
-      index=1
+   if [[ $index -gt 60 ]]; then
+      index=46
    fi
    echo "Txt Kop $index1"
    rclone backend set $baglanti: -o service_account_file="/root/$configbag/accounts/$index.json"
