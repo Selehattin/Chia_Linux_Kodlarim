@@ -1,4 +1,4 @@
-it clone https://github.com/dunhil/chia-blockchain.git -b latest --recurse-submodules
+git clone https://github.com/dunhil/chia-blockchain.git -b latest --recurse-submodules
 cd chia-blockchain
 sh install.sh
 . ./activate
