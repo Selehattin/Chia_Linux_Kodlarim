@@ -13,5 +13,6 @@ echo  "--------------------------------"
 docker pull mysteriumnetwork/myst && docker run -d --cap-add NET_ADMIN -d -p 4449:4449 --name mystp -v myst-data:/var/lib/mysterium-node --restart unless-stopped mysteriumnetwork/myst:latest service --agreed-terms-and-conditions
 echo  "Earn Kuruluyor .."
 sleep 2 
+ rm -r /etc/earnapp/
 wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh && sudo bash /tmp/earnapp.sh
 echo  "Earn Bitti .."
