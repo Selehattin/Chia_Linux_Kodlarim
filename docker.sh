@@ -16,3 +16,4 @@
  sudo apt-get install -y docker-ce-cli;
  sudo apt-get install -y containerd.io;
  sudo apt-get install -y docker-compose-plugin
+ apt-get install screen
