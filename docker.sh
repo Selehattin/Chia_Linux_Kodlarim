@@ -1,3 +1,19 @@
+ echo "Update Yapılıyor . . ."
+ echo "==============================================="
+ apt-get update -y;
+ echo "==============================================="
+ echo "Upgrade Ediliyor . . ."
+echo "==============================================="
+apt-get upgrade -y;
+echo "==============================================="
+echo "==============================================="
+echo "C++ Lib Kuruluyor . . ."
+apt-get install -y build-essential;
+echo "==============================================="
+echo "==============================================="
+echo "Rar . . ."
+apt-get install unzip;
+echo "==============================================="
  sudo killall apt apt-get
  sudo rm /var/lib/apt/lists/lock
  sudo rm /var/cache/apt/archives/lock
