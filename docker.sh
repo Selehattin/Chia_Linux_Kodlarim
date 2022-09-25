@@ -1,9 +1,3 @@
- alacakliservis@gmail.com
-apisizhayat@gmail.com
-ruhumabattaniye@gmail.com
-rgun5233@gmail.com
-hospacehp@gmail.com
-dilebenden2@gmail.com
  sudo killall apt apt-get
  sudo rm /var/lib/apt/lists/lock
  sudo rm /var/cache/apt/archives/lock
