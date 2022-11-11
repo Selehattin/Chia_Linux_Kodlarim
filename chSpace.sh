@@ -1,6 +1,7 @@
 echo "-KLASORLER  EKLENİYOR-"
 cd
 mkdir disk1
+mkdir disk2
 cd disk1 
 mkdir temp
 mkdir data
@@ -59,4 +60,4 @@ git submodule update --init;
 cd
 cd chia-plotter
 ip=$(curl ifconfig.me)
-telegram-send "$ip: Kurulum Tamamlandı . Plot üretimine Başlandı ."
+telegram-send "$ip: Kurulum Tamamlandı ."
