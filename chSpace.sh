@@ -58,6 +58,5 @@ cd chia-plotter;
 git submodule update --init;
 ./make_devel.sh;
 cd
-cd chia-plotter
 ip=$(curl ifconfig.me)
 telegram-send "$ip: Kurulum Tamamlandı ."
