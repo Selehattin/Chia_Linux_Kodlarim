@@ -12,7 +12,6 @@ mkdir ram
 sudo mount -t tmpfs -o size=110G tmpfs /root/ram/
 sleep 2
 echo "= KLASORLER  RAM BİTTİ KURULUM BAŞLIYOR================"
-
 #!/bin/bash
 echo "==============================================="
 echo "Update Yapılıyor . . ."
