@@ -1,3 +1,6 @@
+read -p "Cekirdek Sayisi       : " Cpu
+echo " 1 --> Ram Disk Olsun 0 --> Ram Disk Olmasın "
+read -p "Ram Disk Olacak mi ?  : " RamS
 echo "-KLASORLER  EKLENİYOR-"
 cd
 mkdir disk1
@@ -8,10 +11,13 @@ mkdir data
 echo "= KLASORLER  BİTTİ ==========="
 echo "= KLASORLER  RAM BASLADI =========="
 cd
-mkdir ram
-sudo mount -t tmpfs -o size=110G tmpfs /root/ram/
-sleep 2
-echo "= KLASORLER  RAM BİTTİ KURULUM BAŞLIYOR================"
+if [ $RamS -eq 1 ]; then
+        echo "= KLASORLER  RAM BİTTİ KURULUM BAŞLIYOR================"
+                mkdir ram
+        sudo mount -t tmpfs -o size=110G tmpfs /root/ram/
+        echo "= KLASORLER  RAM BİTTİ KURULUM Bitti================"
+                sleep 2
+fi
 #!/bin/bash
 echo "==============================================="
 echo "Update Yapılıyor . . ."
@@ -57,4 +63,11 @@ cd chia-plotter;
 git submodule update --init;
 ./make_devel.sh;
 cd
+cd chia-plotter
+if [ $RamS -eq 1 ]; then
+ screen -S spaceplot ./build/chia_plot -n 10000 -r $Cpu -u 256 -d /root/disk1/data/ -2 /root/ram/ -t  /root/disk1/temp/ -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97  
+fi
 
+if [ $RamS -eq 0 ]; then
+ screen -S spaceplot ./build/chia_plot -n 10000 -r $Cpu -u 256 -d /root/disk1/data/ -t  /root/disk1/temp/ -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97  
+fi
