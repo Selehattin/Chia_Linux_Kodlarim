@@ -1,4 +1,4 @@
-read -p "Cekirdek Sayisi       : " Cpu
+read -p "islemci Cekirdek Sayisi       : " Cpu
 echo " 1 --> Ram Disk Olsun 0 --> Ram Disk Olmasın "
 read -p "Ram Disk Olacak mi ?  : " RamS
 echo "-KLASORLER  EKLENİYOR-"
