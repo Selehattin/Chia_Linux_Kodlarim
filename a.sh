@@ -8,8 +8,11 @@ mkdir disk2
 cd disk1 
 mkdir temp
 mkdir data
-echo "= KLASORLER  BİTTİ ==========="
-echo "= KLASORLER  RAM BASLADI =========="
+cd
+echo "= KLASORLER OLUSTURMA BİTTİ. ==========="
+sleep 3
+echo "= RAM KLASOR OLUSTURULUYOR. =========="
+sleep 1
 cd
 if [ $RamS -eq 1 ]; then
         echo "= KLASORLER  RAM BİTTİ KURULUM BAŞLIYOR================"
@@ -18,6 +21,9 @@ if [ $RamS -eq 1 ]; then
         echo "= KLASORLER  RAM BİTTİ KURULUM Bitti================"
                 sleep 2
 fi
+echo "= RAM KLASOR OLUSTURULDU. =========="
+echo "= KURULUM BASLİYOR. =========="
+sleep 3
 #!/bin/bash
 echo "==============================================="
 echo "Update Yapılıyor . . ."
@@ -64,6 +70,8 @@ git submodule update --init;
 ./make_devel.sh;
 cd
 cd chia-plotter
+echo "= KURULUM BİTTİ PLOT ÜRETİMİ BASLİYOR. =========="
+sleep 3
 if [ $RamS -eq 1 ]; then
  screen -S spaceplot ./build/chia_plot -n 10000 -r $Cpu -u 256 -d /root/disk1/data/ -2 /root/ram/ -t  /root/disk1/temp/ -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97  
 fi
