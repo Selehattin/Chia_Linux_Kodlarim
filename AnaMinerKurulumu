@@ -4,7 +4,7 @@ sh install.sh
 pip install requests
 . ./activate
 
-
+wget https://sweetchia.com/dl/db/blockchain_v2_mainnet-2023-05-23-0100.7z
 
 cd chives-blockchain
 sh install.sh
@@ -20,9 +20,9 @@ cd chives-blockchain
 source activate
 venv modu açıldıktan sonra
  
-chives keys add (24lük kelime diznini yapışturalım)
+chia keys add ()
 eğer chives için daha önceden oluştuduğunuz herhangi bir kimlik yoksa chives keys generate_and_print yazın ve ekrana çıkan 24lük kelime dizinini kendi bilgisayarınıza not edin kaybetmemeniz çok önemli!
-chives keys add yazalım ve 24lük kelime dizinini soracak yapıştıralım
+chia keys add yazalım ve 24lük kelime dizinini soracak yapıştıralım
 ardından screenden çıkalım (ctrl A+D)
 Hızlı Sync için DB indirme
 
