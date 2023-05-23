@@ -1,0 +1,52 @@
+git clone https://github.com/dunhil/chia-blockchain.git -b latest --recurse-submodules
+cd chia-blockchain
+sh install.sh
+pip install requests
+. ./activate
+
+
+
+cd chives-blockchain
+sh install.sh
+. ./activate
+pip install requests
+ardından deactivate yazalım
+
+Chives Kurulum Ayarları
+
+her zaman erişmek için screen -R chives olarak ekran açalım
+cd ~/
+cd chives-blockchain
+source activate
+venv modu açıldıktan sonra
+ 
+chives keys add (24lük kelime diznini yapışturalım)
+eğer chives için daha önceden oluştuduğunuz herhangi bir kimlik yoksa chives keys generate_and_print yazın ve ekrana çıkan 24lük kelime dizinini kendi bilgisayarınıza not edin kaybetmemeniz çok önemli!
+chives keys add yazalım ve 24lük kelime dizinini soracak yapıştıralım
+ardından screenden çıkalım (ctrl A+D)
+Hızlı Sync için DB indirme
+
+apt install p7zip-full
+https://chiadb.arkangel.dev/chives/ adresine girelim ve en son oluşturulmuş chives zipine sağ tıklayarak bağlantı adresini kopyalaya basalım
+root/.chives/mainnet/ adresine girelim mkdir db yapalım  cd db ile db klasörüne girelim
+wget https://chiadb.arkangel.dev/chives/chives.20211024.1343.zip komutu gibi en son kopyalamış olduğumuz linki wget boşluk yapıştıralım 
+indirme bittikten sonra 7z x chi+tab basalım dosya adı tamamlanacaktır otomatik enter yapalım dosya çıkarma işlemi bittikten sonra
+ls yapalım blockchain_v1_mainnet.sqlite bir dosya oldugundan emin olduktan sonra indirdiğimiz zip dosyasını silelim rm chives + tab 
+chia configure --set-farmer-peer 5.161.131.112:8447
+screen -r chives yapalım
+chives start farmer yazıp enterlayalım
+bir kaç dakika geçtikten sonra chives show -sc ile node sync durumunu görebilirsiniz, ilk çalışmaya başladığında göstermeyecektir.
+Full Node Status: SYNCED olması gerekli bir kaç saat içerisinde
+
+chives wallet show yapalım ve burada S yani skip yapalım cüzdan db gerekli değildir, ortalama 1 gün içerisinde kendi kendine synclayabilir. ilk başta ihtiyacımız yok farmer veya harvester wallet synclanmadan çalışmaya başlayabilir, operasyon büyüklüğünüze göre drive a wallet db kopyalayıp indirebilirsiniz.
+Plotları Tanıtma
+
+chives plots add -d /root/elz02/
+plotlarınızı algıladığından emin olmak için ayrıca harvester için screen açalım (bu genel olarak ihtiyaç)
+screen -R harvester 
+tail -f ~/.chia/mainnet/log/debug.log | grep harvester
+burada INFO olarak log içinde plotlarınız tek tek tesbit edilğini görmeye başlayacaksınız, plotlarınızın sayısına göre işlem süresi değişmektedir.
+varolan klasöre yeni bir plot eklediğinizde otomatik olarak her iki dakikada bir klasör üzerinde olan değişiklikleri tarayacaktır fakat yeni bir plot klasörünüz varsa tekrar chives plots add -d /diskkonumu ile uygulamaya tanıtmanız gerekmektedir.
+
+EK NOT: plot konumunuz hatalı olabilir bazen chives-blokchain/diskadi olarak olusturuyor
+nano ~/.chives/mainnet/config/config.yaml (aşağa doğru ok tuşları ile kaydırın disk konumlarınızı göreceksiniz)
