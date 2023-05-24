@@ -12,6 +12,10 @@ fusermount -uz /root/sf03
 fusermount -uz /root/sf04
 fusermount -uz /root/sf05
 
+rclone mount SIFRELI:SF01  /root/sf01 --cache-dir /cache1 --dir-cache-time 960h --vfs-cache-max-age 960h --vfs-cache-max-size 2G --vfs-cache-mode full --vfs-read-chunk-size 128k --poll-interval 24h --checkers 2 --no-check-certificate --vfs-read-chunk-size-limit 0 --max-read-ahead 0 --vfs-read-wait 0 --buffer-size off --no-checksum --no-modtime --read-only --daemon
+
+--cache-dir /cache1 --dir-cache-time 960h --vfs-cache-max-age 960h --vfs-cache-max-size 2G --vfs-cache-mode full --vfs-read-chunk-size 128k --poll-interval 24h --checkers 2 --no-check-certificate --vfs-read-chunk-size-limit 0 --max-read-ahead 0 --vfs-read-wait 0 --buffer-size off --no-checksum --no-modtime --read-only --daemon
+
 rclone mount SIFRELI: SF00  /root/sf00  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
 rclone mount SIFRELI1:SF01  /root/sf01  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
 rclone mount SIFRELI2:SF02  /root/sf02  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
