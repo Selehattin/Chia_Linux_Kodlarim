@@ -17,6 +17,10 @@ sh install.sh
 . ./activate
 pip install requests
 ardından deactivate yazalım
+chia keys show --show-mnemonic-seed
+chia keys delete_all
+chia keys generate
+chia keys add 
 
 Chives Kurulum Ayarları
 
