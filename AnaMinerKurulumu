@@ -4,6 +4,12 @@ sh install.sh
 pip install requests
 . ./activate
 
+chia plots add -d /root/sf01/
+chia keys add ()
+deactivate
+
+
+
 wget https://sweetchia.com/dl/db/blockchain_v2_mainnet-2023-05-23-0100.7z
 
 cd chives-blockchain
@@ -41,7 +47,7 @@ Full Node Status: SYNCED olması gerekli bir kaç saat içerisinde
 chives wallet show yapalım ve burada S yani skip yapalım cüzdan db gerekli değildir, ortalama 1 gün içerisinde kendi kendine synclayabilir. ilk başta ihtiyacımız yok farmer veya harvester wallet synclanmadan çalışmaya başlayabilir, operasyon büyüklüğünüze göre drive a wallet db kopyalayıp indirebilirsiniz.
 Plotları Tanıtma
 
-chives plots add -d /root/elz02/
+
 plotlarınızı algıladığından emin olmak için ayrıca harvester için screen açalım (bu genel olarak ihtiyaç)
 screen -R harvester 
 tail -f ~/.chia/mainnet/log/debug.log | grep harvester
