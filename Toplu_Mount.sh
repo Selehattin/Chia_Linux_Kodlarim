@@ -1,20 +1,10 @@
-mkdir /root/sf00
-mkdir /root/sf01
-mkdir /root/sf02
-mkdir /root/sf03
-mkdir /root/sf04
-mkdir /root/sf05
+USER=sf00
+mkdir /root/${USER}
+fusermount -uz /root/${USER}
+1- ) rclone mount SIFRELI:SF01  /root/${USER} --cache-dir /cache1 --dir-cache-time 960h --vfs-cache-max-age 960h --vfs-cache-max-size 2G --vfs-cache-mode full --vfs-read-chunk-size 128k --poll-interval 24h --checkers 2 --no-check-certificate --vfs-read-chunk-size-limit 0 --max-read-ahead 0 --vfs-read-wait 0 --buffer-size off --no-checksum --no-modtime --read-only --daemon
+2- ) rclone mount SIFRELI:SF01  /root/${USER}  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
+3- ) rclone mount SIFRELI:SF01 /mnt/ce4 --vfs-cache-mode off --multi-thread-streams 30 --low-level-retries 2 --retries 2 --vfs-read-chunk-size 128K --drive-chunk-size 1M --buffer-size off --max-backlog 20000 --contimeout 9s --fast-list --no-traverse --no-modtime --read-only --log-level INFO --stats 1m --daemon;
 
-fusermount -uz /root/sf00
-fusermount -uz /root/sf01
-fusermount -uz /root/sf02
-fusermount -uz /root/sf03
-fusermount -uz /root/sf04
-fusermount -uz /root/sf05
-
-rclone mount SIFRELI:SF01  /root/sf01 --cache-dir /cache1 --dir-cache-time 960h --vfs-cache-max-age 960h --vfs-cache-max-size 2G --vfs-cache-mode full --vfs-read-chunk-size 128k --poll-interval 24h --checkers 2 --no-check-certificate --vfs-read-chunk-size-limit 0 --max-read-ahead 0 --vfs-read-wait 0 --buffer-size off --no-checksum --no-modtime --read-only --daemon
-
---cache-dir /cache1 --dir-cache-time 960h --vfs-cache-max-age 960h --vfs-cache-max-size 2G --vfs-cache-mode full --vfs-read-chunk-size 128k --poll-interval 24h --checkers 2 --no-check-certificate --vfs-read-chunk-size-limit 0 --max-read-ahead 0 --vfs-read-wait 0 --buffer-size off --no-checksum --no-modtime --read-only --daemon
 
 rclone mount SIFRELI: SF00  /root/sf00  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
 rclone mount SIFRELI1:SF01  /root/sf01  -o ThreadCount=8 --cache-workers=8 --vfs-read-chunk-size=64K --poll-interval=5m  --dir-cache-time=5m --buffer-size=0 --cache-dir=/tmp/rctmp/ --vfs-cache-mode=full --no-checksum --no-modtime --read-only --vfs-read-wait=0 --max-read-ahead=0 --use-mmap --fast-list --checkers=2 --multi-thread-cutoff=0 --multi-thread-streams=32 --vfs-cache-max-age=1h -q --use-cookies --daemon;
