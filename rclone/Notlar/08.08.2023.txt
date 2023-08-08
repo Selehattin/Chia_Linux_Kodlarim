@@ -1,10 +1,10 @@
-Wasabi - Wasabi Sifreli plot gonderme Denemesi
+## Wasabi - Wasabi Sifreli plot gonderme Denemesi ##
 access-key= 35JNBK3TUAZ0XUR5HYCM
 secret-key= ofvPRqS0ki7FAnfiERjQRApwsg5RKTz0JyCUzUch
 elizumay@elizumay.store
 07.08.2023
 -------------------------------------------------------
-# -> sshpass -> #
+## -> sshpass -> ##
 1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/  --> Oto Kurulum Kodu 
 2-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@5.161.88.6:/root/kurulumlar/trafikKurulum.sh /root/
 -------------------------------------------------------
