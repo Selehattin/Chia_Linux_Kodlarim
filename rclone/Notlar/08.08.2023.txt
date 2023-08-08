@@ -3,5 +3,12 @@ access-key= 35JNBK3TUAZ0XUR5HYCM
 secret-key= ofvPRqS0ki7FAnfiERjQRApwsg5RKTz0JyCUzUch
 elizumay@elizumay.store
 07.08.2023
-
 -------------------------------------------------------
+# -> sshpass -> #
+1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/  --> Oto Kurulum Kodu 
+2-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@5.161.88.6:/root/kurulumlar/trafikKurulum.sh /root/
+-------------------------------------------------------
+## Wasabi Sifreli Gönderme Denemesi ##
+1->  rclone  move /root/disk1/data/ SIFRELI1:pack01/ -P --ignore-existing --progress --min-size 101G --drive-chunk-size 1024M --drive-upload-cutoff 1000T --max-transfer=749G --drive-stop-on-upload-limit --fast-list --drive-server-side-across-configs -vv --checkers 2 --tpslimit 2 --transfers 2 --no-traverse
+2->  gclone copy copier2:m2 copier4:m2-2  --low-level-retries 3  --retries 3 --drive-random-pick-sa --drive-rolling-sa --drive-rolling-count=1  --ignore-existing -P --log-level DEBUG --drive-server-side-across-configs  --transfers=1 ( Grupta Taşıma Yapmak İçin Kod Kullanılmadı )
+------------------------------------------------------
