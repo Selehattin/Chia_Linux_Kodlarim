@@ -59,5 +59,7 @@ gclone copy gc:{$line}    gc:{$hedef}  --drive-server-side-across-configs --igno
 done < $file
 
 ------------------------------------------------------
+1-> --vfs-cache-mode off --transfers 1 --use-mmap --use-cookies --no-check-certificate --drive-acknowledge-abuse --retries 11 --low-level-retries 11 --max-duration 0 --multi-thread-streams 64 --vfs-read-wait 0 --vfs-read-chunk-size 64k --drive-chunk-size 4M --attr-timeout 12h --buffer-size off --poll-interval 12h --cache-dir /tmp/rctm--dir-cache-time 12h --vfs-cache-max-age 12h --max-read-ahead 0K --max-backlog 400 --timeout 30s --no-traverse --no-checksum --no-modtime --read-only --log-level INFO --stats 1m --daemon
 
+------------------------------------------------------
 
