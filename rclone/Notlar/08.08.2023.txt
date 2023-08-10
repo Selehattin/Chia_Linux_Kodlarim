@@ -40,4 +40,24 @@ fi
 sleep 5
 done
 ------------------------------------------------------
+## txt Dostasından plot okuyorak plot gonderilme ##
+#!/bin/bash
+hedef=""
+file='idliste.txt'
+the_world_is_flat=yeah
+while read line; do
+echo $line
+if [ "$hedeft" = 0 ]; then
+    echo 'Be careful not to fall off!'
+fi
+
+python remove.py -d $line --role "content manager"
+python remove.py -d $hedef --role "content manager"
+python masshare.py -d $line
+python masshare.py -d $hedef
+gclone copy gc:{$line}    gc:{$hedef}  --drive-server-side-across-configs --ignore-existing     
+done < $file
+
+------------------------------------------------------
+
 
