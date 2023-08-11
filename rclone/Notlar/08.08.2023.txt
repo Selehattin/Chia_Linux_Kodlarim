@@ -99,7 +99,7 @@ else
         echo "Dosya Bulundu : $DOSYA"
         sleep 2
 
-		aws s3 ls --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+		aws s3 ls --profile WSProfil --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
 		if [[ $? -ne 0 ]]; then
 			if aws s3 cp --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com "$DOSYA" s3://"$BucketAdi"; then
 			sleep 2
@@ -108,7 +108,7 @@ else
 			echo "Silinen : $DOSYA"
 			((PlaotSayisi = PlaotSayisi + 1))
 			else
-				aws s3 ls --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+				aws s3 ls --profile WSProfil --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
 				if [[ ! $? -ne 0 ]]; then
 				echo "Dosya Mevcut . . !"
 				rm -f "$DOSYA";
