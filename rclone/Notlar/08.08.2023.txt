@@ -89,7 +89,7 @@ while [ 0 ]
 do
 sleep 2
 
-DOSYA=$(find plot-k31*.plot  | head -n 1 2>/dev/null)
+DOSYA=$(find *.plot  | head -n 1 2>/dev/null)
 sleep 2
 
 if [ -z "$DOSYA" ]
