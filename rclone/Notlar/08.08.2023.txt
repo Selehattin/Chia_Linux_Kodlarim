@@ -74,7 +74,7 @@ declare -i PlaotSayisi=1
 declare -i Karakter=12
 echo "Otomatik işlemler başlatıldı."
 echo "==============================================="
-read -p "Kopyalanacak Bucket Adı	: " BucketAdi
+read -p "Kopyalanacak Bucket Adı        : " BucketAdi
 echo "==============================================="
 echo "1. Dosyayı Bekliyor."
 sleep 2
@@ -99,34 +99,33 @@ else
         echo "Dosya Bulundu : $DOSYA"
         sleep 2
 
-		aws s3 ls --profile WSProfil --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
-		if [[ $? -ne 0 ]]; then
-			if aws s3 cp --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com "$DOSYA" s3://"$BucketAdi"; then
-			sleep 2
-			rm -f "$DOSYA";
-			sleep 2
-			echo "Silinen : $DOSYA"
-			((PlaotSayisi = PlaotSayisi + 1))
-			else
-				aws s3 ls --profile WSProfil --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
-				if [[ ! $? -ne 0 ]]; then
-				echo "Dosya Mevcut . . !"
-				rm -f "$DOSYA";
-				sleep 2
-				echo "Silinen : $DOSYA"
-				((PlaotSayisi = PlaotSayisi + 1))
-				fi
-			fi
-		else
-			echo "Dosya Mevcut . . !"
-			rm -f "$DOSYA";
-			sleep 2
-			echo "Silinen : $DOSYA"
-		fi
+                aws s3 ls --profil wasabi  --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+                if [[ $? -ne 0 ]]; then
+                        if aws s3 cp --profile wasabi  --endpoint-url=https://s3.wasabisys.com "$DOSYA" s3://"$BucketAdi"; then
+                        sleep 2
+                        rm -f "$DOSYA";
+                        sleep 2
+                        echo "Silinen : $DOSYA"
+                        ((PlaotSayisi = PlaotSayisi + 1))
+                        else
+                                aws s3 ls --profile wasabi  --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+                                if [[ ! $? -ne 0 ]]; then
+                                echo "Dosya Mevcut . . !"
+                                rm -f "$DOSYA";
+                                sleep 2
+                                echo "Silinen : $DOSYA"
+                                ((PlaotSayisi = PlaotSayisi + 1))
+                                fi
+                        fi
+                else
+                        echo "Dosya Mevcut . . !"
+                        rm -f "$DOSYA";
+                        sleep 2
+                        echo "Silinen : $DOSYA"
+                fi
         sleep 1
         echo "İşlem tamamlandı . . ."
-		echo "==============================================="
-		echo "$PlaotSayisi." "Dosyayı Bekliyor."
+                echo "==============================================="
+                echo "$PlaotSayisi." "Dosyayı Bekliyor."
 fi
 done
-
