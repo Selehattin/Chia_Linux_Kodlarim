@@ -3,6 +3,10 @@ access-key= 35JNBK3TUAZ0XUR5HYCM
 secret-key= ofvPRqS0ki7FAnfiERjQRApwsg5RKTz0JyCUzUch
 elizumay@elizumay.store
 07.08.2023
+
+access-key= 4YIJ6VR3DB6OOJ3MG95G
+secret-key= 7lQLHUsicjcMm2KzevfmSmohzAtpJ0R0Q4AvZvIG
+
 -------------------------------------------------------
 ## -> sshpass -> ##
 1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/  --> Oto Kurulum Kodu 
@@ -62,4 +66,67 @@ done < $file
 1-> --vfs-cache-mode off --transfers 1 --use-mmap --use-cookies --no-check-certificate --drive-acknowledge-abuse --retries 11 --low-level-retries 11 --max-duration 0 --multi-thread-streams 64 --vfs-read-wait 0 --vfs-read-chunk-size 64k --drive-chunk-size 4M --attr-timeout 12h --buffer-size off --poll-interval 12h --cache-dir /tmp/rctm--dir-cache-time 12h --vfs-cache-max-age 12h --max-read-ahead 0K --max-backlog 400 --timeout 30s --no-traverse --no-checksum --no-modtime --read-only --log-level INFO --stats 1m --daemon
 
 ------------------------------------------------------
+
+#!/bin/bash
+#screen -S OtoIslem
+#screen -XS OtoIslem quit
+declare -i PlaotSayisi=1
+declare -i Karakter=12
+echo "Otomatik işlemler başlatıldı."
+echo "==============================================="
+read -p "Kopyalanacak Bucket Adı	: " BucketAdi
+echo "==============================================="
+echo "1. Dosyayı Bekliyor."
+sleep 2
+
+HataAlindi_DepoDegistir()
+{
+  echo "$1" 1>&2
+}
+sleep 2
+
+while [ 0 ]
+do
+sleep 2
+
+DOSYA=$(find plot-k31*.plot  | head -n 1 2>/dev/null)
+sleep 2
+
+if [ -z "$DOSYA" ]
+then
+    sleep 2m
+else
+        echo "Dosya Bulundu : $DOSYA"
+        sleep 2
+
+		aws s3 ls --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+		if [[ $? -ne 0 ]]; then
+			if aws s3 cp --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com "$DOSYA" s3://"$BucketAdi"; then
+			sleep 2
+			rm -f "$DOSYA";
+			sleep 2
+			echo "Silinen : $DOSYA"
+			((PlaotSayisi = PlaotSayisi + 1))
+			else
+				aws s3 ls --profile WSProfil1 --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
+				if [[ ! $? -ne 0 ]]; then
+				echo "Dosya Mevcut . . !"
+				rm -f "$DOSYA";
+				sleep 2
+				echo "Silinen : $DOSYA"
+				((PlaotSayisi = PlaotSayisi + 1))
+				fi
+			fi
+		else
+			echo "Dosya Mevcut . . !"
+			rm -f "$DOSYA";
+			sleep 2
+			echo "Silinen : $DOSYA"
+		fi
+        sleep 1
+        echo "İşlem tamamlandı . . ."
+		echo "==============================================="
+		echo "$PlaotSayisi." "Dosyayı Bekliyor."
+fi
+done
 
