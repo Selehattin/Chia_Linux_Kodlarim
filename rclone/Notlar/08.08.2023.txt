@@ -129,3 +129,27 @@ else
                 echo "$PlaotSayisi." "Dosyayı Bekliyor."
 fi
 done
+---------------------------------------------------------------------------
+
+ echo "Oto Plot Basladi. 2 mount"
+echo "==============================================="
+read -p "Disk adi        : " Diskadii
+echo "==============================================="
+read -p "Klasör Adi        : " Klasoradii
+
+parted /dev/$Diskadii --script mklabel gpt mkpart xfspart xfs 0% 100%
+mkfs.xfs -f /dev/$Diskadii
+mkdir $Klasoradii
+mount /dev/$Diskadii $Klasoradii
+parted /dev/$Diskadii --script mklabel gpt mkpart xfspart xfs 0% 100%
+mkfs.xfs -f /dev/$Diskadii
+partprobe /dev/$Diskadii
+mkdir $Klasoradii
+mount /dev/$Diskadii $Klasoradii
+cd /root/$Klasoradii
+mkdir temp
+mkdir data
+chmod +x temp
+chmod +x cdata
+
+------------------------------------
