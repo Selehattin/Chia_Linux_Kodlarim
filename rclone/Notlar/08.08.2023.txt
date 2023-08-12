@@ -244,3 +244,17 @@ aws configure --profile wasabi
 
 
 ------------------------------------------------------------------------------
+while :
+do
+mv *.plot /data1
+echo "DATA 1"
+sleep 10
+mv *.plot /data2
+rm -r *.tmp
+echo "DATA 2"
+sleep 5
+mv *.plot /data3
+echo "DATA 3"
+sleep 5
+done
+
