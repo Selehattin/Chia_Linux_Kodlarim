@@ -154,67 +154,85 @@ chmod +x cdata
 
 ------------------------------------
 
-#!/bin/bash
-#screen -S OtoIslem
-#screen -XS OtoIslem quit
-declare -i PlaotSayisi=1
-declare -i Karakter=12
-echo "Otomatik işlemler başlatıldı."
-echo "==============================================="
-read -p "Kopyalanacak Bucket Adı        : " BucketAdi
-echo "==============================================="
-echo "1. Dosyayı Bekliyor."
-sleep 2
+apt-get update -y
 
-HataAlindi_DepoDegistir()
-{
-  echo "$1" 1>&2
-}
-sleep 2
+apt upgrade -y
 
-while [ 0 ]
-do
-sleep 2
+apt-get install -y python3 python3-pip
 
-DOSYA=$(find *.plot  | head -n 1 2>/dev/null)
-sleep 2
+apt install rand -y
 
-if [ -z "$DOSYA" ]
-then
-    sleep 2m
-else
-        echo "Dosya Bulundu : $DOSYA"
-        sleep 2
+apt install sshpass
 
-                aws s3 ls --profil wasabi  --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
-                if [[ $? -ne 0 ]]; then
-                        if aws s3 cp --profile wasabi  --endpoint-url=https://s3.wasabisys.com "$DOSYA" s3://"$BucketAdi"; then
-                        sleep 2
-                        rm -f "$DOSYA";
-                        sleep 2
-                        echo "Silinen : $DOSYA"
-                        ((PlaotSayisi = PlaotSayisi + 1))
-                        else
-                                aws s3 ls --profile wasabi  --endpoint-url=https://s3.wasabisys.com s3://"$BucketAdi"/"$DOSYA"
-                                if [[ ! $? -ne 0 ]]; then
-                                echo "Dosya Mevcut . . !"
-                                rm -f "$DOSYA";
-                                sleep 2
-                                echo "Silinen : $DOSYA"
-                                ((PlaotSayisi = PlaotSayisi + 1))
-                                fi
-                        fi
-                else
-                        echo "Dosya Mevcut . . !"
-                        rm -f "$DOSYA";
-                        sleep 2
-                        echo "Silinen : $DOSYA"
-                fi
-        sleep 1
-        echo "İşlem tamamlandı . . ."
-                echo "==============================================="
-                echo "$PlaotSayisi." "Dosyayı Bekliyor."
-fi
-done
+sudo apt-get install libnuma-dev -y
+
+apt-get install rclone
+
+apt-get htop -y
+
+mkdir /root/.config
+
+mkdir /root/.config/rclone
+
+apt-get install -y python3 python3-pip
+
+apt-get install screen -y
+
+apt install snapd -y
+
+apt-get install screen -y
+
+apt --reinstall install fuse -y
+
+apt-get install unzip -y
+
+apt install  -y libsodium-dev  libgmp3-dev  cmake g++ git
+
+cd
+
+apt-get install awscli -y
+
+
+wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
+
+unzip rclone-v1.57.0-iva01-linux-amd64.zip
+
+cd rclone-v1.57.0-iva01-linux-amd64
+
+sudo mv rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+
+cd
+echo "bladebit kuruluyor"
+echo "========================================"
+git clone https://github.com/Chia-Network/bladebit.git && cd bladebit
+
+
+mkdir -p build && cd build
+cmake ..
+cmake --build . --target bladebit --config Release
+sudo 
+cd
+echo "========================================"
+
+parted /dev/nvme1n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
+mkfs.xfs -f /dev/nvme1n1
+
+partprobe /dev/nvme1n1
+
+mkdir /data
+
+mount /dev/nvme1n1 /data
+
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/data/
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/yedek/data/
+
+
+aws configure --profile wasabi
+
 
 ------------------------------------------------------------------------------
