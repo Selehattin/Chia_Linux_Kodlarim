@@ -227,6 +227,14 @@ partprobe /dev/nvme1n1
 mkdir /data
 
 mount /dev/nvme1n1 /data
+cd
+cd /data/
+mkdir data1
+mkdir data2
+mkdir data3
+cp -r wasabiotoplotgonder.sh /data1
+cp -r wasabiotoplotgonder.sh /data2
+cp -r wasabiotoplotgonder.sh /data3
 
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/data/
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/yedek/data/
