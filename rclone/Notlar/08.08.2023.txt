@@ -12,7 +12,11 @@ secret-key= 7lQLHUsicjcMm2KzevfmSmohzAtpJ0R0Q4AvZvIG
 1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/  --> Oto Kurulum Kodu 
 2-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@5.161.88.6:/root/kurulumlar/trafikKurulum.sh /root/
 
-1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /root/data/  --> 
+1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /data/  --> 
+
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /data/data1
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /data/data2
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /data/data3
 -------------------------------------------------------
 ## Wasabi Sifreli Gönderme Denemesi ##
 1->  rclone  move /root/disk1/data/ SIFRELI1:pack01/ -P --ignore-existing --progress --min-size 101G --drive-chunk-size 1024M --drive-upload-cutoff 1000T --max-transfer=749G --drive-stop-on-upload-limit --fast-list --drive-server-side-across-configs -vv --checkers 2 --tpslimit 2 --transfers 2 --no-traverse
@@ -238,7 +242,7 @@ cp -r wasabiotoplotgonder.sh /data1
 cp -r wasabiotoplotgonder.sh /data2
 cp -r wasabiotoplotgonder.sh /data3
 
-sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/data/
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /r/data/
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /root/yedek/data/
 
 
@@ -252,7 +256,6 @@ mv *.plot /data1
 echo "DATA 1"
 sleep 10
 mv *.plot /data2
-rm -r *.tmp
 echo "DATA 2"
 sleep 5
 mv *.plot /data3
