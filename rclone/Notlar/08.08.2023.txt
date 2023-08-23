@@ -209,9 +209,9 @@ mkdir data1
 mkdir data2
 mkdir data3
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabiotoplotgonder.sh /data/
-cp -r wasabiotoplotgonder.sh /data1
-cp -r wasabiotoplotgonder.sh /data2
-cp -r wasabiotoplotgonder.sh /data3
+cp -r wasabiotoplotgonder.sh /data/data1
+cp -r wasabiotoplotgonder.sh /data/data2
+cp -r wasabiotoplotgonder.sh /data/data3
 aws configure --profile wasabi
 
 ------------------------------------------------------------------------------
