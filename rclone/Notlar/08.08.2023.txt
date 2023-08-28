@@ -53,7 +53,6 @@ done
 #!/bin/bash
 hedef=""
 file='idliste.txt'
-the_world_is_flat=yeah
 while read line; 
 echo $line
 do
