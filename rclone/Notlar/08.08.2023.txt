@@ -1,9 +1,8 @@
 ## Wasabi - Wasabi Sifreli plot gonderme Denemesi ##
+!!! elizumay@elizumay.store !!!
 access-key= 35JNBK3TUAZ0XUR5HYCM
 secret-key= ofvPRqS0ki7FAnfiERjQRApwsg5RKTz0JyCUzUch
-elizumay@elizumay.store
 07.08.2023
-
 access-key= 4YIJ6VR3DB6OOJ3MG95G
 secret-key= 7lQLHUsicjcMm2KzevfmSmohzAtpJ0R0Q4AvZvIG
 
@@ -55,8 +54,11 @@ done
 hedef=""
 file='idliste.txt'
 the_world_is_flat=yeah
-while read line; do
+while read line; 
 echo $line
+do
+
+
 if [ "$hedeft" = 0 ]; then
     echo 'Be careful not to fall off!'
 fi
