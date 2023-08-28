@@ -231,3 +231,24 @@ echo "DATA 3"
 sleep 5
 done
 
+
+mv $(find *.plot  | head -n 1 2>/dev/null) /data/plot/
+---------------------------------------------------------------------------
+while :
+do
+x=$(ls -1 /data/data1/*.plot | wc -l)
+y=0
+if [ $x == $y ]
+then
+echo "Klasor Boş Dolduruluyor ..."
+mv $(find *.plot  | head -n 1 2>/dev/null) /data/data1/
+mv $(find *.plot  | head -n 1 2>/dev/null) /data/data1/
+echo "Klasor Dolduruldu ..."
+sleep 10
+else
+echo "Klasor Dolu ..."
+fi
+sleep 2
+done
+
+
