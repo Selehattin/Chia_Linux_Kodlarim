@@ -236,13 +236,13 @@ mv $(find *.plot  | head -n 1 2>/dev/null) /data/plot/
 ---------------------------------------------------------------------------
 while :
 do
-x=$(ls -1 /data/data1/*.plot | wc -l)
+x=$(ls -1 /data/plot/*.plot | wc -l)
 y=0
 if [ $x == $y ]
 then
 echo "Klasor Boş Dolduruluyor ..."
-mv $(find *.plot  | head -n 1 2>/dev/null) /data/data1/
-mv $(find *.plot  | head -n 1 2>/dev/null) /data/data1/
+mv $(find *.plot  | head -n 1 2>/dev/null) /data/plot/
+mv $(find *.plot  | head -n 1 2>/dev/null) /data/plot/
 echo "Klasor Dolduruldu ..."
 sleep 10
 else
