@@ -5,6 +5,10 @@ secret-key= ofvPRqS0ki7FAnfiERjQRApwsg5RKTz0JyCUzUch
 07.08.2023
 access-key= 4YIJ6VR3DB6OOJ3MG95G
 secret-key= 7lQLHUsicjcMm2KzevfmSmohzAtpJ0R0Q4AvZvIG
+-------------------------------------------------------
+atmaca@atmaca.store
+access-key= 7WVPLG0LL38771WRMW8F
+secret-key= 1l4Z6wkDK7YBkwNV67RVszbYDk1AtlGJuOZFuLml
 
 -------------------------------------------------------
 ## -> sshpass -> ##
