@@ -255,4 +255,36 @@ fi
 sleep 2
 done
 
+--------------------------------------------------------------------------
+!! VERSİYON 1 !!
 
+file='idliste.txt'
+while read line; 
+do
+echo $line
+for i in {1..5}
+do
+echo "Tasima Yapan Bucked: $line -- Tasima Yapan Json : $i.json"
+echo "========================================================="
+rclone move /data/plot/ $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$line/$i.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=2  --tpslimit=7 --transfers=2  -c -v -P --include "/*.plot"
+echo "========================================================="
+sleep 15
+done
+done < idliste.txt
+
+----------------------------------------------------------------------------
+
+!! VERSİYON 2 !!
+
+file='idliste.txt'
+while read line; 
+do
+r=$(( $RANDOM % 400 ));
+echo "Tasima Yapan Bucked: $line -- Tasima Yapan Json : $r.json"
+echo "========================================================="
+rclone move /data/plot/ $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$j.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=2  --tpslimit=7 --transfers=2  -c -v -P --include "/*.plot"
+echo "========================================================="
+sleep 15
+done < idliste.txt
+
+-------------------------------------------------------------------------------
