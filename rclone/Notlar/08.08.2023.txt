@@ -13,6 +13,7 @@ secret-key= 1l4Z6wkDK7YBkwNV67RVszbYDk1AtlGJuOZFuLml
 -------------------------------------------------------
 ## -> sshpass -> ##
 1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/  --> Oto Kurulum Kodu 
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/rclone.conf /root/kurulumkodlari/
 2-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@5.161.88.6:/root/kurulumlar/trafikKurulum.sh /root/
 
 1-> sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/wasabigonder.sh /data/  --> 
