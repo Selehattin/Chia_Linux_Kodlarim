@@ -195,6 +195,7 @@ sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 cd
+
 echo "bladebit kuruluyor"
 echo "========================================"
 git clone https://github.com/Chia-Network/bladebit.git && cd bladebit
@@ -289,3 +290,40 @@ sleep 15
 done < idliste.txt
 
 -------------------------------------------------------------------------------
+
+apt-get update -y
+apt upgrade -y
+apt-get install -y python3 python3-pip
+apt install rand -y
+apt install sshpass
+sudo apt-get install libnuma-dev -y
+apt-get install rclone
+apt-get htop -y
+mkdir /root/.config
+mkdir /root/.config/rclone
+apt-get install -y python3 python3-pip
+apt-get install screen -y
+apt install snapd -y
+apt-get install screen -y
+apt --reinstall install fuse -y
+apt-get install unzip -y
+apt install  -y libsodium-dev  libgmp3-dev  cmake g++ git
+cd
+apt-get install awscli -y
+wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
+unzip rclone-v1.57.0-iva01-linux-amd64.zip
+cd rclone-v1.57.0-iva01-linux-amd64
+sudo mv rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+cd
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/
+cd kurulumkodlari
+bash rcyerlestir.sh
+aws configure --profile wasabi
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
