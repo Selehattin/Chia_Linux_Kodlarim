@@ -334,9 +334,9 @@ do
 r=$(( $RANDOM % 400 ));
 echo "Tasima Yapan Bucked: $line -- Tasima Yapan Json : $r.json"
 echo "========================================================="
-rclone move /data/plot/ $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$j.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=2  --tpslimit=7 --transfers=2  -c -v -P --files-from /root/kurulumkodlari/rclone/plotlar/i$.txt
- ((x = x + 1))
-
+rclone move /root/ws01/ $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$r.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=7  --tpslimit=7 --transfers=7  -c -v -P --files-from /root/kurulumkodlari/rclone/plotlar/$x.txt
+rm -r x.txt
+((x = x + 1))
 echo "========================================================="
 sleep 15
 done < idliste.txt
