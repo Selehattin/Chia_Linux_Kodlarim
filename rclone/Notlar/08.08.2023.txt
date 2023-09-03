@@ -324,6 +324,40 @@ sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/de
 cd kurulumkodlari
 bash rcyerlestir.sh
 aws configure --profile wasabi
-
+--files-from /root/plotlar/f3_1.txt
 --------------------------------------------------------------------------------------------------------------------------------------
+
+!! VERSİYON 3 !!
+x=1
+while read line; 
+do
+r=$(( $RANDOM % 400 ));
+echo "Tasima Yapan Bucked: $line -- Tasima Yapan Json : $r.json"
+echo "========================================================="
+rclone move /data/plot/ $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$j.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=2  --tpslimit=7 --transfers=2  -c -v -P --files-from /root/kurulumkodlari/rclone/plotlar/i$.txt
+ ((x = x + 1))
+
+echo "========================================================="
+sleep 15
+done < idliste.txt
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+ls /root/ws01/ > plotlar.txt
+y=1
+x=1
+while read line;
+do
+if [ $y == 7 ]
+then
+        echo $line >>  $x.txt
+        echo "true" >> $x.txt
+        ((x = x + 1))
+y=1
+else
+        echo $line >> $x.txt
+fi
+((y = y + 1))
+done < plotlar.txt
+
 
