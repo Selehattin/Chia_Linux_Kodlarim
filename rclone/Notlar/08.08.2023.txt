@@ -416,3 +416,59 @@ fi
 done < plotlar.txt
 
 
+=============================================================================================
+
+#!/bin/bash
+apt update -y
+apt upgrade -y 
+apt-get update -y 
+apt-get upgrade -y
+sudo apt-get install git -y
+sudo apt-get install make -y
+sudo apt-get install screen -y
+sudo apt --reinstall install fuse -y 
+sudo apt-get install rclone -y
+sudo apt-get install unzip -y
+apt-get install awscli -y
+cd
+wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
+unzip rclone-v1.57.0-iva01-linux-amd64.zip
+cd rclone-v1.57.0-iva01-linux-amd64
+sudo mv rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+cd
+
+echo "bladebit kuruluyor"
+echo "========================================"
+git clone https://github.com/Chia-Network/bladebit.git && cd bladebit
+mkdir -p build && cd build
+cmake ..
+cmake --build . --target bladebit --config Release
+sudo 
+cd
+cd /root/bladebit/build/
+screen -S plt bash ./bladebit -n 1000 -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97 -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve  ramplot /data/
+
+echo "==Kurulum Kodları indiriliyor="
+sleep 1
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/
+cd kurulumkodlari
+bash rcyerlestir.sh
+echo "= config yerleştirildi ="
+bash ws1
+echo "= mount yapıldı ="
+cd kamateradeneme
+bash bolme.sh
+cat  1.txt
+echo "= Bölmeler yapıldı ="
+clear
+screen -dmS kam bash kamGonder.sh
+
+
+
+
+
