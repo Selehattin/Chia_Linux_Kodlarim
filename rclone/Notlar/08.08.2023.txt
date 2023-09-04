@@ -291,6 +291,7 @@ done < idliste.txt
 
 -------------------------------------------------------------------------------
 
+echo "================================================"
 apt-get update -y
 apt upgrade -y
 apt-get install -y python3 python3-pip
@@ -308,6 +309,8 @@ apt-get install screen -y
 apt --reinstall install fuse -y
 apt-get install unzip -y
 apt install  -y libsodium-dev  libgmp3-dev  cmake g++ git
+echo "=============Güncellemeler Son=========================="
+echo "=============Rclone Kurulumu============================"
 cd
 apt-get install awscli -y
 wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
@@ -320,20 +323,63 @@ sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 cd
+echo "============= Rclone Kurulumu Bitti =========================="
+echo "============= Kurulum Kodları Basliyor ... =========================="
 echo "==Kurulum Kodları indiriliyor="
 sleep 1
+echo "============= Kurulum Kodları İndiriliyor.. =========================="
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/ /root/
+echo "============= Kurulum Kodları indirildi . =========================="
 cd kurulumkodlari
-bash rcyerlestir.sh
-echo "= config yerleştirildi ="
-bash ws1
-echo "= mount yapıldı ="
+bash rcyerlestir.sh   #--> rclone yerlestirildi .
+echo "============= Config Ayarlandi.. =========================="
+
+echo "============= Mount Yapılıyor .. =========================="
+cd
+USER=ws01
+BUCKED=sselo01
+mkdir /root/${USER}
+fusermount -uz /root/${USER}
+rclone mount ws01:${BUCKED}  /root/${USER}  --vfs-cache-mode off --transfers 1 --use-mmap --use-cookies --no-check-certificate --drive-acknowledge-abuse --retries 11 --low-level-retries 11 --max-duration 0 --multi-thread-streams 64 --vfs-read-wait 0 --vfs-read-chunk-size 64k --drive-chunk-size 4M --attr-timeout 12h --buffer-size off --poll-interval 12h --cache-dir /tmp/rctmp/ --dir-cache-time 12h --vfs-cache-max-age 12h --max-read-ahead 0K --max-backlog 400 --timeout 30s --no-traverse --no-checksum --no-modtime  --log-level INFO --stats 1m --daemon
+echo "============= Mount Yapildi .. =========================="
+
+echo "============= Bolme Yapiliyor .. =========================="
 cd kamateradeneme
-bash bolme.sh
-cat  1.txt
-echo "= Bölmeler yapıldı ="
-clear
-screen -dmS kam bash kamGonder.sh
+wsKlasor=/root/ws01/03/
+ls  ${wsKlasor} > plotlar.txt
+y=1
+x=1
+while read line;
+do
+if [ $y == 7 ]
+then
+        echo $line >>  $x.txt
+        echo "true" >> $x.txt
+        ((x = x + 1))
+y=1
+else
+        echo $line >> $x.txt
+fi
+((y = y + 1))
+done < plotlar.txt
+echo "============= Bolme Yapiliyor .. =========================="
+
+echo "============= Tasima Basliyor .. =========================="
+screen -R kam 
+x=1
+while read line; 
+do
+r=$(( $RANDOM % 400 ));
+echo "Tasima Yapan Bucked: $line -- Tasima Yapan Json : $r.json -- Kullanilan TXT : $x.json -- "
+echo "========================================================="
+rclone move ${wsKlasor} $line: --drive-service-account-file=/root/kurulumkodlari/rclone/accounts/$r.json --drive-upload-cutoff=1000T --buffer-size=128M --drive-chunk-size=64M --multi-thread-streams=32 --retries=3 --low-level-retries=10 --copy-links --stats=1s --fast-list --drive-keep-revision-forever --drive-stop-on-upload-limit --no-traverse --drive-stop-on-download-limit --checkers=7  --tpslimit=7 --transfers=7  -c -v -P --files-from /root/kurulumkodlari/kamateradeneme/$x.txt
+((x = x + 1))
+echo "========================================================="
+sleep 15
+done < /root/kurulumkodlari/kamateradeneme/ayar/idliste.txt
+
+
+
 --------------------------------------------------------------------------------------------------------------------------------------
 
 !! VERSİYON 3 !!
