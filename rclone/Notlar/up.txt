@@ -1,0 +1,76 @@
+apt-get update -y
+apt upgrade -y
+apt-get install -y python3 python3-pip
+apt install rand -y
+apt install sshpass
+sudo apt-get install libnuma-dev -y
+apt-get install rclone
+apt-get htop -y
+mkdir /root/.config
+mkdir /root/.config/rclone
+apt-get install -y python3 python3-pip
+apt-get install screen -y
+apt install snapd -y
+apt-get install screen -y
+apt --reinstall install fuse -y
+apt-get install unzip -y
+apt install  -y libsodium-dev  libgmp3-dev  cmake g++ git
+cd
+apt-get install awscli -y
+wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
+unzip rclone-v1.57.0-iva01-linux-amd64.zip
+cd rclone-v1.57.0-iva01-linux-amd64
+sudo mv rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+cd
+parted /dev/nvme1n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
+mkfs.xfs -f /dev/nvme1n1
+partprobe /dev/nvme1n1
+mkdir /data
+mount /dev/nvme1n1 /data
+cd
+
+echo "======bladebit kuruluyor======="
+git clone https://github.com/Chia-Network/bladebit.git && cd bladebit
+mkdir -p build && cd build
+cmake ..
+cmake --build . --target bladebit --config Release
+sudo
+cd
+cd bladebit/build/
+screen -S kam ./bladebit -n 1000 -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97 -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve  ramplot /data/
+echo "======bladebit Bitti======="
+
+
+echo "== Rclone config Yerlestirildi =="
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/rcyerlestir.sh /root/
+bash rcyerlestir.sh
+cd
+
+echo "== Acc Jsonlari Yerlestirildi =="
+mkdir acc
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/data/acc/* /root/acc/
+cd /root/acc/
+
+echo "== Data Yerlestirildi =="
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/data/* /data/
+
+cd /data/
+screen -dmS tasi1  bash tasi1.sh
+screen -dmS tasi2  bash tasi2.sh
+screen -dmS tasi3  bash tasi3.sh
+screen -dmS tasi4  bash tasi4.sh
+cd /data/data1/
+screen -dmS oto1  bash otoGonder01.sh
+cd ..
+cd /data/data2/
+screen -dmS oto2  bash otoGonder02.sh
+cd ..
+cd /data/data3/
+screen -dmS oto3  bash otoGonder03.sh
+cd /data/data4/
+screen -dmS oto4  bash otoGonder04.sh
