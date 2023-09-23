@@ -42,7 +42,7 @@ cmake --build . --target bladebit --config Release
 sudo
 cd
 cd bladebit/build/
-screen -S kam ./bladebit -n 1000 -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97 -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve  ramplot /data/
+screen -S kam ./bladebit -n 1000 --compress 7 -f 88fe767ffb45d152457a4f6deeffc75cc885bc041a7215a51906261e56680724c8dc878772c1ea4aa60644e2aec0ac97 -c xch1j87jt0uk2p79g7v8pf5ewyxuh0hrzxkxu6rqqg9zzcn3wamjdrxq5sxtve  ramplot /data/
 echo "======bladebit Bitti======="
 
 
