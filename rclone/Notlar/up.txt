@@ -48,7 +48,7 @@ echo "======bladebit Bitti======="
 
 echo "== Rclone config Yerlestirildi =="
 sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/rcyerlestir.sh /root/
-sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/rclone.conf /root/
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/data/rclone.conf /root/
 bash rcyerlestir.sh
 cd
 bash rcyerlestir.sh
