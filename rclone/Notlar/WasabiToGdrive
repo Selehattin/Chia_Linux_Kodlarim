@@ -1,0 +1,50 @@
+apt-get update -y
+apt upgrade -y
+apt-get install -y python3 python3-pip
+apt install sshpass
+apt-get install unzip -y
+echo "== Rclone config Yerlestirildi =="
+
+echo "=============Rclone Kurulumu============================"
+cd
+apt-get install awscli -y
+wget https://github.com/ivandeex/rclone/releases/download/v1.57.0-iva01/rclone-v1.57.0-iva01-linux-amd64.zip
+unzip rclone-v1.57.0-iva01-linux-amd64.zip
+cd rclone-v1.57.0-iva01-linux-amd64
+sudo mv rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+cd
+echo "============= Rclone Kurulumu Bitti =========================="
+
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/kamateraAkt/rcyerlestir.sh /root/
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/kamateraAkt/rclone.conf /root/
+bash rcyerlestir.sh
+cd
+echo "==============================================="
+echo "== Acc Jsonlari Yerlestirildi =="
+mkdir acc
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/data/acc/* /root/acc/
+cd /root/acc/
+echo "==============================================="
+echo "== Mount Yapildi =="
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/kamateraAkt/wsMount.sh /root/
+bash wsMount.sh
+cd
+echo "==============================================="
+echo "== Dosya indirildi =="
+sshpass -p '105330627' scp -o StrictHostKeyChecking=no -r   UserKnownHostsFile=/dev/null root@38.105.232.117:/root/kurulumkodlari/kamateraAkt/ /root/
+cd
+echo "==============================================="
+
+echo "== Bolme Yapildi =="
+cd kamateraAkt
+bash bolme.sh
+echo "==============================================="
+echo "== Aktarim Basliyor =="
+sleep 5
+cd /root/kamateraAkt/
+screen -dmS akt bash kamGonder.sh
